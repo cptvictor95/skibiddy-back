@@ -1,10 +1,42 @@
 # Skibiddy Backend
 
-### Paths
+### Production Dependencies
+- bcryptjs
+- cors
+- dotenv
+- express
+- jsonwebtoken
+- knex
+- mysql
+- uuid
 
-#### `/signup`
-#### SignUp Method:
-`POST`
+### Development Dependencies
+- @types/bcryptjs
+- @types/cors
+- @types/express
+- @types/graceful-fs
+- @types/jest
+- @types/jsonwebtoken
+- @types/knex
+- @types/node
+- @types/uuid
+- @typescript-eslint/eslint-plugin
+- @typescript-eslint/parser
+- eslint
+- eslint-config-prettier
+- eslint-plugin-prettier
+- jest
+- nodemon
+- prettier
+- ts-jest
+- ts-node
+- typescript
+
+## Endpoint instructions
+
+### SignUp
+#### Method `POST`
+#### Path: `/signup`
 #### SignUp object structure example:
 ```
 {
