@@ -1,0 +1,8 @@
+-- User table structure
+CREATE TABLE IF NOT EXISTS Users (
+  id VARCHAR(64) NOT NULL PRIMARY KEY,
+  name VARCHAR(64) NOT NULL,
+  email VARCHAR(64) NOT NULL UNIQUE,
+  nickname VARCHAR(32) NOT NULL UNIQUE,
+  password VARCHAR(64) NOT NULL
+);
