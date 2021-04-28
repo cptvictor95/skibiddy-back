@@ -5,7 +5,7 @@ import queryUserById from '../../data/user/queryUserById';
 import { SongInputDTO } from '../../model/song';
 import { getTokenData } from '../../services/auth';
 
-const createSong = async (req: Request, res: Response) => {
+const createSong = async (req: Request, res: Response): Promise<Response> => {
   try {
     const token = req.headers.authorization as string;
     const tokenData = getTokenData(token);

@@ -1,5 +1,4 @@
 import signUpBiz from '../src/business/signUpBiz';
-import signUpController from '../src/controller/signUpController';
 import { UserInputDTO } from '../src/model/user';
 
 /* 
@@ -13,7 +12,7 @@ import { UserInputDTO } from '../src/model/user';
 
 // SignUp Suite
 describe('SignUp Tests', () => {
-  test('Should return missing fields error.', async () => {
+  test('Should return missing field error.', async () => {
     try {
       const user = {
         name: '',
@@ -28,7 +27,7 @@ describe('SignUp Tests', () => {
     }
   });
 
-  test('Should return missing fields error.', async () => {
+  test('Should return missing field error.', async () => {
     try {
       const user = {
         name: 'Victor Cardoso Pudo Torres',
@@ -43,7 +42,7 @@ describe('SignUp Tests', () => {
     }
   });
 
-  test('Should return missing fields error.', async () => {
+  test('Should return missing field error.', async () => {
     try {
       const user = {
         name: 'Victor Cardoso Pudo Torres',
@@ -58,7 +57,7 @@ describe('SignUp Tests', () => {
     }
   });
 
-  test('Should return missing fields error.', async () => {
+  test('Should return missing field error.', async () => {
     try {
       const user = {
         name: 'Victor Cardoso Pudo Torres',
