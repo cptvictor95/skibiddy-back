@@ -7,7 +7,7 @@ const signUpController = async (
   res: Response
 ): Promise<Response> => {
   try {
-    const { name, nickname, email, password } = req.body as UserInputDTO;
+    const { name, nickname, email, password }: UserInputDTO = req.body;
 
     const token = await signUpBiz({
       name: name,
@@ -18,7 +18,7 @@ const signUpController = async (
 
     return res.status(201).send({
       status: 'Success!',
-      message: 'User registered successfully!',
+      message: 'User registered!',
       user: { name, nickname, email },
       token: token,
     });

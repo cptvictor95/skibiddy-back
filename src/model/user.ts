@@ -12,3 +12,8 @@ export type UserInputDTO = {
   email: string;
   password: string;
 };
+
+export type SignInInputDTO = {
+  email: string;
+  password: string;
+};

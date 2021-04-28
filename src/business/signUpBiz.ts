@@ -8,8 +8,10 @@ import createId from '../services/idGen';
 const signUpBiz = async (input: UserInputDTO): Promise<string> => {
   try {
     // Input Validations
-    if (!input.email || !input.password || !input.name || !input.nickname)
-      throw new Error('Please fill all the fields.');
+    if (!input.name) throw new Error('Name field is empty.');
+    if (!input.email) throw new Error('Email field is empty.');
+    if (!input.nickname) throw new Error('Nickname field is empty.');
+    if (!input.password) throw new Error('Password field is empty.');
     if (!input.email.includes('@')) throw new Error('Invalid email.');
     if (input.password.length < 6)
       throw new Error('Password must have at least 6 characters.');

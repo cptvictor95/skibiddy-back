@@ -1,4 +1,5 @@
 import signUpBiz from '../src/business/signUpBiz';
+import signUpController from '../src/controller/signUpController';
 import { UserInputDTO } from '../src/model/user';
 
 /* 
@@ -23,7 +24,52 @@ describe('SignUp Tests', () => {
 
       await signUpBiz(user);
     } catch (error) {
-      expect(error.message).toBe('Please fill all the fields.');
+      expect(error.message).toBe('Name field is empty.');
+    }
+  });
+
+  test('Should return missing fields error.', async () => {
+    try {
+      const user = {
+        name: 'Victor Cardoso Pudo Torres',
+        nickname: '',
+        email: 'fleabs@hotmail.com',
+        password: 'qweqwe',
+      } as UserInputDTO;
+
+      await signUpBiz(user);
+    } catch (error) {
+      expect(error.message).toBe('Nickname field is empty.');
+    }
+  });
+
+  test('Should return missing fields error.', async () => {
+    try {
+      const user = {
+        name: 'Victor Cardoso Pudo Torres',
+        nickname: 'fleabs',
+        email: '',
+        password: 'qweqwe',
+      } as UserInputDTO;
+
+      await signUpBiz(user);
+    } catch (error) {
+      expect(error.message).toBe('Email field is empty.');
+    }
+  });
+
+  test('Should return missing fields error.', async () => {
+    try {
+      const user = {
+        name: 'Victor Cardoso Pudo Torres',
+        nickname: 'fleabs',
+        email: 'fleabs@hotmail.com',
+        password: '',
+      } as UserInputDTO;
+
+      await signUpBiz(user);
+    } catch (error) {
+      expect(error.message).toBe('Password field is empty.');
     }
   });
 
@@ -88,4 +134,17 @@ describe('SignUp Tests', () => {
       );
     }
   });
+
+  // test('Should return token string', async () => {
+  //   const user = {
+  //     name: 'John Doe',
+  //     nickname: 'johnDoe',
+  //     email: 'john.doe@email.com',
+  //     password: 'qweqwe',
+  //   } as UserInputDTO;
+
+  //   const result = await signUpBiz(user);
+
+  //   expect(signUpBiz(user)).toHaveLastReturnedWith({result});
+  // });
 });
