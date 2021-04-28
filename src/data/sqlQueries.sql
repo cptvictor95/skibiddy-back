@@ -1,4 +1,9 @@
--- User table structure
+SELECT * FROM Users;
+SELECT * FROM Songs;
+
+DELETE FROM Users WHERE name = 'John Doe';
+DROP TABLE Songs;
+
 CREATE TABLE IF NOT EXISTS Users (
   id VARCHAR(64) NOT NULL PRIMARY KEY,
   name VARCHAR(64) NOT NULL,
@@ -7,18 +12,11 @@ CREATE TABLE IF NOT EXISTS Users (
   password VARCHAR(64) NOT NULL
 );
 
--- Songs table structure
 CREATE TABLE IF NOT EXISTS Songs (
   id VARCHAR(64) NOT NULL PRIMARY KEY,
   title VARCHAR(64) NOT NULL,
   posted_at DATE NOT NULL,
   album VARCHAR(64) NOT NULL,
-  genre VARCHAR(32) NOT NULL,
   author_id VARCHAR(64),
   FOREIGN KEY (author_id) REFERENCES Users(id)
-);
-
-CREATE TABLE IF NOT EXISTS Genres (
-  id VARCHAR(64) NOT NULL PRIMARY KEY,
-  name VARCHAR(64) NOT NULL
 );
