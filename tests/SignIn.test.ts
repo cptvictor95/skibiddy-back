@@ -1,6 +1,12 @@
 import signInBiz from '../src/business/signInBiz';
 import { SignInInputDTO } from '../src/model/user';
 
+/* 
+  TO DO:
+[X] Missing fields
+[] Invalid email
+*/
+
 // SignIn Suite
 describe('SignIn Tests', () => {
   it('Should return missing email error.', async () => {
