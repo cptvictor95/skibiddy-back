@@ -4,6 +4,7 @@ import { inputValidator } from '../src/utils/inputValidator';
 import { registeredValidator } from '../src/utils/registeredValidator';
 import { emailValidator } from '../src/utils/emailValidator';
 import { passwordValidator } from '../src/utils/passwordValidator';
+import authMock from './mocks/AuthMock';
 
 /* 
   -- TO DO:
@@ -12,11 +13,13 @@ import { passwordValidator } from '../src/utils/passwordValidator';
 [X] Email already registered
 [X] Nickname already registered
 [X] Password too short
-[] Authenticator Mock
+[X] Authenticator Mock created
+[] Authenticator Mock tested
+[] SignUp Success
 */
 
 // SignUp Suite
-describe('SignUp Tests', () => {
+describe('SignUp Test Suite', () => {
   test('Should return missing field error.', async () => {
     try {
       const user = {
@@ -160,7 +163,7 @@ describe('SignUp Tests', () => {
         passwordValidator
       );
     } catch (error) {
-      expect(error.message).toContain('Nickname already taken.');
+      expect(error.message).toContain('Nickname already registered.');
     }
   });
 
@@ -181,9 +184,27 @@ describe('SignUp Tests', () => {
         passwordValidator
       );
     } catch (error) {
-      expect(error.message).toContain(
-        'Password must have at least 6 characters.'
+      expect(error.message).toContain('Password is too short.');
+    }
+  });
+  test('Should return too long password error.', async () => {
+    try {
+      const user = {
+        name: 'Victor',
+        nickname: 'fleabs',
+        email: 'cpt.victor@hotmail.com',
+        password: 'qweqweqweqweqweqweqweqweqweqweqweqweqweqwqweqweeqweqwe',
+      } as UserInputDTO;
+
+      await signUpBiz(
+        user,
+        inputValidator,
+        registeredValidator,
+        emailValidator,
+        passwordValidator
       );
+    } catch (error) {
+      expect(error.message).toContain('Password is too long.');
     }
   });
 
@@ -195,8 +216,8 @@ describe('SignUp Tests', () => {
   //     password: 'qweqwe',
   //   } as UserInputDTO;
 
-  //   const result = await signUpBiz(user);
+  //   const result = await authMock(user);
 
-  //   expect(signUpBiz(user)).toHaveLastReturnedWith({ result });
+  //   expect(await authMock(user)).toMatch(result);
   // });
 });
