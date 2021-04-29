@@ -1,10 +1,12 @@
 import { Router } from 'express';
 import createSong from '../controller/song/createSong';
+import getSongById from '../controller/song/getSongById';
 import getSongs from '../controller/song/getSongs';
 
 const songRoutes = Router();
 
-songRoutes.post('/song', createSong);
+songRoutes.post('/songs', createSong);
 songRoutes.get('/songs', getSongs);
+songRoutes.get('/song/:id', getSongById);
 
 export default songRoutes;
