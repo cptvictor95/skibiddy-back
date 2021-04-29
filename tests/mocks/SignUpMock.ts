@@ -1,12 +1,11 @@
 import { User, UserInputDTO } from '../../src/model/user';
 import signUpBiz from '../../src/business/signUpBiz';
-import { authData } from '../../src/model/authData';
 import { createIdMock } from './createIdMock';
 import { generateToken } from './generateTokenMock';
+import { hash } from './hashPasswordMock';
 
 export const SignUpMock = (input: UserInputDTO) => {
   const queryUsers = async (): Promise<User[]> => [];
-  const hash = async (password: string): Promise<string> => 'senhaString';
   const insertUser = async (user: User): Promise<void> => {};
 
   const user = {

@@ -16,7 +16,7 @@ import { authData } from '../src/model/authData';
 
 // SignUp Suite
 describe('SignUp Test Suite', () => {
-  test('Should return missing field error.', async () => {
+  it('Should return missing field error.', async () => {
     try {
       const user = {
         name: '',
@@ -31,7 +31,7 @@ describe('SignUp Test Suite', () => {
     }
   });
 
-  test('Should return missing field error.', async () => {
+  it('Should return missing field error.', async () => {
     try {
       const user = {
         name: 'John Doe',
@@ -46,7 +46,7 @@ describe('SignUp Test Suite', () => {
     }
   });
 
-  test('Should return missing field error.', async () => {
+  it('Should return missing field error.', async () => {
     try {
       const user = {
         name: 'John Doe',
@@ -61,7 +61,7 @@ describe('SignUp Test Suite', () => {
     }
   });
 
-  test('Should return missing field error.', async () => {
+  it('Should return missing field error.', async () => {
     try {
       const user = {
         name: 'John Doe',
@@ -76,7 +76,7 @@ describe('SignUp Test Suite', () => {
     }
   });
 
-  test('Should return invalid email error.', async () => {
+  it('Should return invalid email error.', async () => {
     try {
       const user = {
         name: 'John Doe',
@@ -91,7 +91,7 @@ describe('SignUp Test Suite', () => {
     }
   });
 
-  test('Should return duplicate email error.', async () => {
+  it('Should return duplicate email error.', async () => {
     try {
       const user = {
         name: 'John Doe',
@@ -106,7 +106,7 @@ describe('SignUp Test Suite', () => {
     }
   });
 
-  test('Should return duplicate nickname error.', async () => {
+  it('Should return duplicate nickname error.', async () => {
     try {
       const user = {
         name: 'John Doe',
@@ -121,7 +121,7 @@ describe('SignUp Test Suite', () => {
     }
   });
 
-  test('Should return too short password error.', async () => {
+  it('Should return too short password error.', async () => {
     try {
       const user = {
         name: 'John Doe',
@@ -135,7 +135,7 @@ describe('SignUp Test Suite', () => {
       expect(error.message).toContain('Password is too short.');
     }
   });
-  test('Should return too long password error.', async () => {
+  it('Should return too long password error.', async () => {
     try {
       const user = {
         name: 'John Doe',
@@ -150,7 +150,7 @@ describe('SignUp Test Suite', () => {
     }
   });
 
-  test('Should return token string', async () => {
+  it('Should return token string', async () => {
     const user = {
       name: 'John Doe',
       nickname: 'johnDoe',

@@ -1,36 +1,36 @@
 # Skibiddy Backend
 
-### Production Dependencies
-- bcryptjs
-- cors
-- dotenv
-- express
-- jsonwebtoken
-- knex
-- mysql
-- uuid
+#### Production Dependencies
+- ##### bcryptjs
+- ##### cors
+- ##### dotenv
+- ##### express
+- ##### jsonwebtoken
+- ##### knex
+- ##### mysql
+- ##### uuid
 
-### Development Dependencies
-- @types/bcryptjs
-- @types/cors
-- @types/express
-- @types/graceful-fs
-- @types/jest
-- @types/jsonwebtoken
-- @types/knex
-- @types/node
-- @types/uuid
-- @typescript-eslint/eslint-plugin
-- @typescript-eslint/parser
-- eslint
-- eslint-config-prettier
-- eslint-plugin-prettier
-- jest
-- nodemon
-- prettier
-- ts-jest
-- ts-node
-- typescript
+#### Development Dependencies
+- ##### @types/bcryptjs
+- ##### @types/cors
+- ##### @types/express
+- ##### @types/graceful-fs
+- ##### @types/jest
+- ##### @types/jsonwebtoken
+- ##### @types/knex
+- ##### @types/node
+- ##### @types/uuid
+- ##### @typescript-eslint/eslint-plugin
+- ##### @typescript-eslint/parser
+- ##### eslint
+- ##### eslint-config-prettier
+- ##### eslint-plugin-prettier
+- ##### jest
+- ##### nodemon
+- ##### prettier
+- ##### ts-jest
+- ##### ts-node
+- ##### typescript
 
 ## Endpoint instructions
 
