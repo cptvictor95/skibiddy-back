@@ -1,27 +1,28 @@
 import insertUser from '../data/user/insertUser';
-import queryUsers from '../data/user/queryUsers';
-import { UserInputDTO } from '../model/user';
+import { authData } from '../model/authData';
+import { User, UserInputDTO } from '../model/user';
 import { generateToken } from '../services/auth';
 import { hash } from '../services/hash';
 import createId from '../services/idGen';
+import { emailValidator } from '../utils/emailValidator';
+import { inputValidator } from '../utils/inputValidator';
+import { passwordValidator } from '../utils/passwordValidator';
+import { registeredValidator } from '../utils/registeredValidator';
 
 const signUpBiz = async (
   input: UserInputDTO,
-  validateInput: (input: string, fieldName: string) => Error | void,
-  registeredValidator: (
-    array: string[],
-    input: string,
-    fieldName: string
-  ) => Error | void,
-  emailValidator: (email: string) => Error | void,
-  passwordValidator: (password: string) => Error | void
+  queryUsers: () => Promise<User[]>,
+  createId: () => string,
+  generateToken: (payload: authData) => string,
+  hash: (password: string) => Promise<string>,
+  insertUser: (user: User) => Promise<void>
 ): Promise<string> => {
   try {
     // Check if fields are empty
-    validateInput(input.name, 'Name');
-    validateInput(input.email, 'Email');
-    validateInput(input.nickname, 'Nickname');
-    validateInput(input.password, 'Password');
+    inputValidator(input.name, 'Name');
+    inputValidator(input.email, 'Email');
+    inputValidator(input.nickname, 'Nickname');
+    inputValidator(input.password, 'Password');
     // Check if email is valid
     emailValidator(input.email);
     // Check if password is valid
@@ -30,8 +31,6 @@ const signUpBiz = async (
     const users = await queryUsers();
     const emails = users.map((user) => user.email);
     const nicknames = users.map((user) => user.nickname);
-
-    if (!users) throw new Error('No users found.');
 
     // Check if already registered
     registeredValidator(emails, input.email, 'Email');

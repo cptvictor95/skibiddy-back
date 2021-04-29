@@ -1,10 +1,7 @@
 import signUpBiz from '../src/business/signUpBiz';
-import { UserInputDTO } from '../src/model/user';
-import { inputValidator } from '../src/utils/inputValidator';
-import { registeredValidator } from '../src/utils/registeredValidator';
-import { emailValidator } from '../src/utils/emailValidator';
-import { passwordValidator } from '../src/utils/passwordValidator';
-import authMock from './mocks/AuthMock';
+import { User, UserInputDTO } from '../src/model/user';
+import { authMock } from './mocks/AuthMock';
+import { authData } from '../src/model/authData';
 
 /* 
   -- TO DO:
@@ -14,8 +11,8 @@ import authMock from './mocks/AuthMock';
 [X] Nickname already registered
 [X] Password too short
 [X] Authenticator Mock created
-[] Authenticator Mock tested
-[] SignUp Success
+[X] Authenticator Mock tested
+[X] SignUp Success
 */
 
 // SignUp Suite
@@ -29,13 +26,7 @@ describe('SignUp Test Suite', () => {
         password: 'qweqwe',
       } as UserInputDTO;
 
-      await signUpBiz(
-        user,
-        inputValidator,
-        registeredValidator,
-        emailValidator,
-        passwordValidator
-      );
+      await authMock(user);
     } catch (error) {
       expect(error.message).toBe('Name field is empty.');
     }
@@ -50,13 +41,7 @@ describe('SignUp Test Suite', () => {
         password: 'qweqwe',
       } as UserInputDTO;
 
-      await signUpBiz(
-        user,
-        inputValidator,
-        registeredValidator,
-        emailValidator,
-        passwordValidator
-      );
+      await authMock(user);
     } catch (error) {
       expect(error.message).toBe('Nickname field is empty.');
     }
@@ -71,13 +56,7 @@ describe('SignUp Test Suite', () => {
         password: 'qweqwe',
       } as UserInputDTO;
 
-      await signUpBiz(
-        user,
-        inputValidator,
-        registeredValidator,
-        emailValidator,
-        passwordValidator
-      );
+      await authMock(user);
     } catch (error) {
       expect(error.message).toBe('Email field is empty.');
     }
@@ -92,13 +71,7 @@ describe('SignUp Test Suite', () => {
         password: '',
       } as UserInputDTO;
 
-      await signUpBiz(
-        user,
-        inputValidator,
-        registeredValidator,
-        emailValidator,
-        passwordValidator
-      );
+      await authMock(user);
     } catch (error) {
       expect(error.message).toBe('Password field is empty.');
     }
@@ -113,13 +86,7 @@ describe('SignUp Test Suite', () => {
         password: 'qweqwe',
       } as UserInputDTO;
 
-      await signUpBiz(
-        user,
-        inputValidator,
-        registeredValidator,
-        emailValidator,
-        passwordValidator
-      );
+      await authMock(user);
     } catch (error) {
       expect(error.message).toBe('Invalid email.');
     }
@@ -134,13 +101,7 @@ describe('SignUp Test Suite', () => {
         password: 'qweqwe',
       } as UserInputDTO;
 
-      await signUpBiz(
-        user,
-        inputValidator,
-        registeredValidator,
-        emailValidator,
-        passwordValidator
-      );
+      await authMock(user);
     } catch (error) {
       expect(error.message).toContain('Email already registered.');
     }
@@ -155,13 +116,7 @@ describe('SignUp Test Suite', () => {
         password: 'qweqwe',
       } as UserInputDTO;
 
-      await signUpBiz(
-        user,
-        inputValidator,
-        registeredValidator,
-        emailValidator,
-        passwordValidator
-      );
+      await authMock(user);
     } catch (error) {
       expect(error.message).toContain('Nickname already registered.');
     }
@@ -176,13 +131,7 @@ describe('SignUp Test Suite', () => {
         password: 'qwe',
       } as UserInputDTO;
 
-      await signUpBiz(
-        user,
-        inputValidator,
-        registeredValidator,
-        emailValidator,
-        passwordValidator
-      );
+      await authMock(user);
     } catch (error) {
       expect(error.message).toContain('Password is too short.');
     }
@@ -196,28 +145,22 @@ describe('SignUp Test Suite', () => {
         password: 'qweqweqweqweqweqweqweqweqweqweqweqweqweqwqweqweeqweqwe',
       } as UserInputDTO;
 
-      await signUpBiz(
-        user,
-        inputValidator,
-        registeredValidator,
-        emailValidator,
-        passwordValidator
-      );
+      await authMock(user);
     } catch (error) {
       expect(error.message).toContain('Password is too long.');
     }
   });
 
-  // test('Should return token string', async () => {
-  //   const user = {
-  //     name: 'John Doe',
-  //     nickname: 'johnDoe',
-  //     email: 'john.doe@email.com',
-  //     password: 'qweqwe',
-  //   } as UserInputDTO;
+  test('Should return token string', async () => {
+    const user = {
+      name: 'John Doe',
+      nickname: 'johnDoe',
+      email: 'john.doe@email.com',
+      password: 'qweqwe',
+    } as UserInputDTO;
 
-  //   const result = await authMock(user);
+    const result = await authMock(user);
 
-  //   expect(await authMock(user)).toMatch(result);
-  // });
+    expect(await authMock(user)).toMatch(result);
+  });
 });

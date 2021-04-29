@@ -1,6 +1,11 @@
 import { Request, Response } from 'express';
 import signUpBiz from '../business/signUpBiz';
+import insertUser from '../data/user/insertUser';
+import queryUsers from '../data/user/queryUsers';
 import { UserInputDTO } from '../model/user';
+import { generateToken } from '../services/auth';
+import { hash } from '../services/hash';
+import createId from '../services/idGen';
 import { emailValidator } from '../utils/emailValidator';
 import { inputValidator } from '../utils/inputValidator';
 import { passwordValidator } from '../utils/passwordValidator';
@@ -20,10 +25,11 @@ const signUpController = async (
         email: email,
         password: password,
       },
-      inputValidator,
-      registeredValidator,
-      emailValidator,
-      passwordValidator
+      queryUsers,
+      createId,
+      generateToken,
+      hash,
+      insertUser
     );
 
     return res.status(201).send({

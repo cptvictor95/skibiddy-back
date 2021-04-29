@@ -1,31 +1,30 @@
-import { authData } from '../../src/model/authData';
-import { UserInputDTO } from '../../src/model/user';
-import { generateToken } from '../../src/services/auth';
-import createId from '../../src/services/idGen';
+import { User, UserInputDTO } from '../../src/model/user';
 import signUpBiz from '../../src/business/signUpBiz';
-import { inputValidator } from '../../src/utils/inputValidator';
-import { registeredValidator } from '../../src/utils/registeredValidator';
-import { emailValidator } from '../../src/utils/emailValidator';
-import { passwordValidator } from '../../src/utils/passwordValidator';
+import { authData } from '../../src/model/authData';
 
-const authMock = (input: UserInputDTO) => {
-  const id = createId();
+export const authMock = (input: UserInputDTO) => {
+  const createId = () => 'idMock';
+  const queryUsers = async (): Promise<User[]> => [];
+  const generateToken = (payload: authData) => 'tokenMock';
+  const hash = async (password: string): Promise<string> => 'senhaString';
+  const insertUser = async (user: User): Promise<void> => {};
+
   const user = {
-    id: id,
+    id: createId,
     name: input.name,
     nickname: input.nickname,
     email: input.email,
     password: input.password,
   };
+
   const token = signUpBiz(
     user,
-    inputValidator,
-    registeredValidator,
-    emailValidator,
-    passwordValidator
+    queryUsers,
+    createId,
+    generateToken,
+    hash,
+    insertUser
   );
 
   return token;
 };
-
-export default authMock;
