@@ -1,4 +1,7 @@
 # Skibiddy Backend
+This is a study project created with the intent of practicing the knowledge learned throughout the Labenu Web Full Stack course.
+
+The project is intended to be a music platform where you can publish your own music, initially through hyperlinks.
 
 #### Production Dependencies
 - ##### bcryptjs
@@ -32,6 +35,19 @@
 - ##### ts-node
 - ##### typescript
 
+## Entities structure examples:
+
+#### User
+```
+{
+	"id": "b1x8g4eh-2e23-205a-1392-4b9adf40da28",
+	"name": "John Doe",
+	"email": "john.doe@email.com",
+	"nickname": "johnDoe",
+	"password": "asd123"
+}
+```
+
 ## Endpoint instructions
 
 ### SignUp
@@ -40,21 +56,45 @@
 #### SignUp object structure example:
 ```
 {
-  "name": "John Doe",
+	"name": "John Doe",
 	"email": "john.doe@email.com",
 	"nickname": "johnDoe",
 	"password": "asd123"
 }
 ```
 
-#### User object structure example:
+#### Object returned on success:
 ```
 {
-  "id": "b1x8g4eh-2e23-205a-1392-4b9adf40da28",
-  "name": "John Doe",
+    "status": "Success!",
+    "message": "User registered!",
+    "user": {
+        "name": "John Doe",
+        "nickname": "johnDoe",
+        "email": "john.doe@email.com"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE2YzJhYzM4LTZkNDgtNDQ3MC1hMmI0LWIyNTU5NWNjOTAxNyIsImlhdCI6MTYxOTcyNjQzNSwiZXhwIjoxNjE5NzMwMDM1fQ.rV_xImeAk3wT7bFS9mzjJnEnmZcV50RdeH4TNYGb9uY"
+}
+```
+
+### SignIn
+#### Method `POST`
+#### Path: `/signin`
+#### SignIn object structure example:
+```
+{
 	"email": "john.doe@email.com",
-	"nickname": "johnDoe",
 	"password": "asd123"
+}
+```
+
+#### Object returned on success:
+```
+{
+	"status": "Success!",
+	"message": "User logged in!",
+	"user": "john.doe@email.com",
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwMjFlOTY1LTExMDItNGQ4MC1iNWQ0LThkOTI2MDViNzc4NiIsImlhdCI6MTYxOTcyOTgzNSwiZXhwIjoxNjE5NzMzNDM1fQ.vQwZtEWr3cGbjI-LArk1FfvZ57r6JUMS-_ZobO93a2o"
 }
 ```
 
