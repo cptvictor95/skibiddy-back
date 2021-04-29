@@ -4,17 +4,20 @@ import { UserInputDTO } from '../model/user';
 import { generateToken } from '../services/auth';
 import { hash } from '../services/hash';
 import createId from '../services/idGen';
-
 import registeredValidator from '../utils/registeredValidator';
 import { inputValidator } from '../utils/inputValidator';
 
-const signUpBiz = async (input: UserInputDTO): Promise<string> => {
+const signUpBiz = async (
+  input: UserInputDTO,
+  validateInput: typeof inputValidator,
+  validateArray: typeof registeredValidator
+): Promise<string> => {
   try {
-    // Input Validations
-    inputValidator(input.name, 'Name');
-    inputValidator(input.email, 'Email');
-    inputValidator(input.nickname, 'Nickname');
-    inputValidator(input.password, 'Password');
+    // Check if fields are empty
+    validateInput(input.name, 'Name');
+    validateInput(input.email, 'Email');
+    validateInput(input.nickname, 'Nickname');
+    validateInput(input.password, 'Password');
     if (!input.email.includes('@')) throw new Error('Invalid email.');
     if (input.password.length < 6)
       throw new Error('Password must have at least 6 characters.');
@@ -25,9 +28,10 @@ const signUpBiz = async (input: UserInputDTO): Promise<string> => {
 
     if (!users) throw new Error('No users found.');
 
-    if (!registeredValidator(emails, input.email))
+    // Check if already registered
+    if (!validateArray(emails, input.email))
       throw new Error('Email already registered.');
-    if (!registeredValidator(nicknames, input.nickname))
+    if (!validateArray(nicknames, input.nickname))
       throw new Error('Nickname already taken.');
 
     // Services

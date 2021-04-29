@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import signUpBiz from '../business/signUpBiz';
 import { UserInputDTO } from '../model/user';
+import { inputValidator } from '../utils/inputValidator';
+import registeredValidator from '../utils/registeredValidator';
 
 const signUpController = async (
   req: Request,
@@ -9,12 +11,16 @@ const signUpController = async (
   try {
     const { name, nickname, email, password }: UserInputDTO = req.body;
 
-    const token = await signUpBiz({
-      name: name,
-      nickname: nickname,
-      email: email,
-      password: password,
-    });
+    const token = await signUpBiz(
+      {
+        name: name,
+        nickname: nickname,
+        email: email,
+        password: password,
+      },
+      inputValidator,
+      registeredValidator
+    );
 
     return res.status(201).send({
       status: 'Success!',
