@@ -8,6 +8,7 @@ import { UserInputDTO } from '../src/model/user';
 [X] Email already registered
 [X] Nickname already registered
 [X] Password too short
+[] Authenticator Mock
 */
 
 // SignUp Suite
@@ -134,16 +135,16 @@ describe('SignUp Tests', () => {
     }
   });
 
-  // test('Should return token string', async () => {
-  //   const user = {
-  //     name: 'John Doe',
-  //     nickname: 'johnDoe',
-  //     email: 'john.doe@email.com',
-  //     password: 'qweqwe',
-  //   } as UserInputDTO;
+  test('Should return token string', async () => {
+    const user = {
+      name: 'John Doe',
+      nickname: 'johnDoe',
+      email: 'john.doe@email.com',
+      password: 'qweqwe',
+    } as UserInputDTO;
 
-  //   const result = await signUpBiz(user);
+    const result = await signUpBiz(user);
 
-  //   expect(signUpBiz(user)).toHaveLastReturnedWith({result});
-  // });
+    expect(signUpBiz(user)).toHaveLastReturnedWith({ result });
+  });
 });
