@@ -3,37 +3,6 @@ This is a study project created with the intent of practicing the knowledge lear
 
 The project is intended to be a music platform where you can publish your own music, initially through hyperlinks.
 
-#### Production Dependencies
-- ##### bcryptjs
-- ##### cors
-- ##### dotenv
-- ##### express
-- ##### jsonwebtoken
-- ##### knex
-- ##### mysql
-- ##### uuid
-
-#### Development Dependencies
-- ##### @types/bcryptjs
-- ##### @types/cors
-- ##### @types/express
-- ##### @types/graceful-fs
-- ##### @types/jest
-- ##### @types/jsonwebtoken
-- ##### @types/knex
-- ##### @types/node
-- ##### @types/uuid
-- ##### @typescript-eslint/eslint-plugin
-- ##### @typescript-eslint/parser
-- ##### eslint
-- ##### eslint-config-prettier
-- ##### eslint-plugin-prettier
-- ##### jest
-- ##### nodemon
-- ##### prettier
-- ##### ts-jest
-- ##### ts-node
-- ##### typescript
 
 ## Entities structure examples:
 
@@ -98,9 +67,77 @@ The project is intended to be a music platform where you can publish your own mu
 }
 ```
 
+### Usage instructions:
+Create a new folder on your PC, download the code and run the following commands on your terminal.
+
+To install the project dependencies:
+
+If you use yarn
+```
+yarn install
+```
+If you use NPM
+```
+npm install
+```
+
+Then run the following commands to run the project:
+
+If you use yarn
+```
+yarn dev
+```
+If you use NPM
+```
+npm run dev
+```
+
+The project also has automated tests for every endpoint made, to test it, run the following commands:
+
+If you use yarn
+```
+yarn test
+```
+If you use NPM
+```
+npm run test
+```
+
 ### References
 - Deezer
 - Spotify
 - Tidal
 - Apple Music
 - SoundCloud
+
+#### Production Dependencies
+- ##### bcryptjs
+- ##### cors
+- ##### dotenv
+- ##### express
+- ##### jsonwebtoken
+- ##### knex
+- ##### mysql
+- ##### uuid
+
+#### Development Dependencies
+- ##### @types/bcryptjs
+- ##### @types/cors
+- ##### @types/express
+- ##### @types/graceful-fs
+- ##### @types/jest
+- ##### @types/jsonwebtoken
+- ##### @types/knex
+- ##### @types/node
+- ##### @types/uuid
+- ##### @typescript-eslint/eslint-plugin
+- ##### @typescript-eslint/parser
+- ##### eslint
+- ##### eslint-config-prettier
+- ##### eslint-plugin-prettier
+- ##### jest
+- ##### nodemon
+- ##### prettier
+- ##### ts-jest
+- ##### ts-node
+- ##### typescript
