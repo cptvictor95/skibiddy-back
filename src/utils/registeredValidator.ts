@@ -1,9 +1,8 @@
-const registeredValidator = (
+export const registeredValidator = (
   array: string[],
-  stringToValidate: string
-): boolean => {
-  if (array.includes(stringToValidate)) return false;
-  else return true;
+  stringToValidate: string,
+  fieldName: string
+): Error | void => {
+  if (array.includes(stringToValidate))
+    throw new Error(`${fieldName} already registered.`);
 };
-
-export default registeredValidator;

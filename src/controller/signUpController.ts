@@ -1,8 +1,10 @@
 import { Request, Response } from 'express';
 import signUpBiz from '../business/signUpBiz';
 import { UserInputDTO } from '../model/user';
+import { emailValidator } from '../utils/emailValidator';
 import { inputValidator } from '../utils/inputValidator';
-import registeredValidator from '../utils/registeredValidator';
+import { passwordValidator } from '../utils/passwordValidator';
+import { registeredValidator } from '../utils/registeredValidator';
 
 const signUpController = async (
   req: Request,
@@ -19,7 +21,9 @@ const signUpController = async (
         password: password,
       },
       inputValidator,
-      registeredValidator
+      registeredValidator,
+      emailValidator,
+      passwordValidator
     );
 
     return res.status(201).send({
