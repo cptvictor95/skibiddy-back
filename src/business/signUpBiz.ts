@@ -5,16 +5,16 @@ import { generateToken } from '../services/auth';
 import { hash } from '../services/hash';
 import createId from '../services/idGen';
 
-import emailValidator from '../utils/emailValidator';
-import nicknameValidator from '../utils/nicknameValidator';
+import registeredValidator from '../utils/registeredValidator';
+import { inputValidator } from '../utils/inputValidator';
 
 const signUpBiz = async (input: UserInputDTO): Promise<string> => {
   try {
     // Input Validations
-    if (!input.name) throw new Error('Name field is empty.');
-    if (!input.email) throw new Error('Email field is empty.');
-    if (!input.nickname) throw new Error('Nickname field is empty.');
-    if (!input.password) throw new Error('Password field is empty.');
+    inputValidator(input.name, 'Name');
+    inputValidator(input.email, 'Email');
+    inputValidator(input.nickname, 'Nickname');
+    inputValidator(input.password, 'Password');
     if (!input.email.includes('@')) throw new Error('Invalid email.');
     if (input.password.length < 6)
       throw new Error('Password must have at least 6 characters.');
@@ -25,9 +25,9 @@ const signUpBiz = async (input: UserInputDTO): Promise<string> => {
 
     if (!users) throw new Error('No users found.');
 
-    if (!emailValidator(emails, input.email))
+    if (!registeredValidator(emails, input.email))
       throw new Error('Email already registered.');
-    if (!nicknameValidator(nicknames, input.nickname))
+    if (!registeredValidator(nicknames, input.nickname))
       throw new Error('Nickname already taken.');
 
     // Services
