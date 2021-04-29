@@ -1,6 +1,9 @@
 import { Request, Response } from 'express';
 import signInBiz from '../business/signInBiz';
+import queryUserByEmail from '../data/user/queryUserByEmail';
 import { SignInInputDTO } from '../model/user';
+import { generateToken } from '../services/auth';
+import { comparePassword } from '../services/hash';
 
 const signInController = async (
   req: Request,
@@ -9,7 +12,12 @@ const signInController = async (
   try {
     const { email, password }: SignInInputDTO = req.body;
 
-    const token: string = await signInBiz({ email, password });
+    const token: string = await signInBiz(
+      { email, password },
+      queryUserByEmail,
+      comparePassword,
+      generateToken
+    );
 
     return res.status(200).send({
       status: 'Success!',

@@ -1,6 +1,6 @@
 import signUpBiz from '../src/business/signUpBiz';
 import { User, UserInputDTO } from '../src/model/user';
-import { authMock } from './mocks/AuthMock';
+import { SignUpMock } from './mocks/SignUpMock';
 import { authData } from '../src/model/authData';
 
 /* 
@@ -10,8 +10,7 @@ import { authData } from '../src/model/authData';
 [X] Email already registered
 [X] Nickname already registered
 [X] Password too short
-[X] Authenticator Mock created
-[X] Authenticator Mock tested
+[X] Password too long
 [X] SignUp Success
 */
 
@@ -21,12 +20,12 @@ describe('SignUp Test Suite', () => {
     try {
       const user = {
         name: '',
-        nickname: 'fleabs',
-        email: 'fleabs@hotmail.com',
+        nickname: 'johnDoe',
+        email: 'john.doe@email.com',
         password: 'qweqwe',
       } as UserInputDTO;
 
-      await authMock(user);
+      await SignUpMock(user);
     } catch (error) {
       expect(error.message).toBe('Name field is empty.');
     }
@@ -35,13 +34,13 @@ describe('SignUp Test Suite', () => {
   test('Should return missing field error.', async () => {
     try {
       const user = {
-        name: 'Victor Cardoso Pudo Torres',
+        name: 'John Doe',
         nickname: '',
-        email: 'fleabs@hotmail.com',
+        email: 'john.doe@email.com',
         password: 'qweqwe',
       } as UserInputDTO;
 
-      await authMock(user);
+      await SignUpMock(user);
     } catch (error) {
       expect(error.message).toBe('Nickname field is empty.');
     }
@@ -50,13 +49,13 @@ describe('SignUp Test Suite', () => {
   test('Should return missing field error.', async () => {
     try {
       const user = {
-        name: 'Victor Cardoso Pudo Torres',
-        nickname: 'fleabs',
+        name: 'John Doe',
+        nickname: 'johnDoe',
         email: '',
         password: 'qweqwe',
       } as UserInputDTO;
 
-      await authMock(user);
+      await SignUpMock(user);
     } catch (error) {
       expect(error.message).toBe('Email field is empty.');
     }
@@ -65,13 +64,13 @@ describe('SignUp Test Suite', () => {
   test('Should return missing field error.', async () => {
     try {
       const user = {
-        name: 'Victor Cardoso Pudo Torres',
-        nickname: 'fleabs',
-        email: 'fleabs@hotmail.com',
+        name: 'John Doe',
+        nickname: 'johnDoe',
+        email: 'john.doe@email.com',
         password: '',
       } as UserInputDTO;
 
-      await authMock(user);
+      await SignUpMock(user);
     } catch (error) {
       expect(error.message).toBe('Password field is empty.');
     }
@@ -80,13 +79,13 @@ describe('SignUp Test Suite', () => {
   test('Should return invalid email error.', async () => {
     try {
       const user = {
-        name: 'Victor',
-        nickname: 'fleabs',
-        email: 'fleabshotmail.com',
+        name: 'John Doe',
+        nickname: 'johnDoe',
+        email: 'john.doe@email.com',
         password: 'qweqwe',
       } as UserInputDTO;
 
-      await authMock(user);
+      await SignUpMock(user);
     } catch (error) {
       expect(error.message).toBe('Invalid email.');
     }
@@ -95,13 +94,13 @@ describe('SignUp Test Suite', () => {
   test('Should return duplicate email error.', async () => {
     try {
       const user = {
-        name: 'Victor',
-        nickname: 'fleabssss',
-        email: 'cpt.victor@hotmail.com',
+        name: 'John Doe',
+        nickname: 'johnDoe',
+        email: 'john.doe@email.com',
         password: 'qweqwe',
       } as UserInputDTO;
 
-      await authMock(user);
+      await SignUpMock(user);
     } catch (error) {
       expect(error.message).toContain('Email already registered.');
     }
@@ -110,13 +109,13 @@ describe('SignUp Test Suite', () => {
   test('Should return duplicate nickname error.', async () => {
     try {
       const user = {
-        name: 'Victor',
-        nickname: 'flebas',
-        email: 'cpt.victoreqweaa@hotmail.com',
+        name: 'John Doe',
+        nickname: 'johnDoe',
+        email: 'john.doe@email.com',
         password: 'qweqwe',
       } as UserInputDTO;
 
-      await authMock(user);
+      await SignUpMock(user);
     } catch (error) {
       expect(error.message).toContain('Nickname already registered.');
     }
@@ -125,13 +124,13 @@ describe('SignUp Test Suite', () => {
   test('Should return too short password error.', async () => {
     try {
       const user = {
-        name: 'Victor',
-        nickname: 'fleabs',
-        email: 'cpt.victor@hotmail.com',
+        name: 'John Doe',
+        nickname: 'johnDoe',
+        email: 'john.doe@email.com',
         password: 'qwe',
       } as UserInputDTO;
 
-      await authMock(user);
+      await SignUpMock(user);
     } catch (error) {
       expect(error.message).toContain('Password is too short.');
     }
@@ -139,13 +138,13 @@ describe('SignUp Test Suite', () => {
   test('Should return too long password error.', async () => {
     try {
       const user = {
-        name: 'Victor',
-        nickname: 'fleabs',
-        email: 'cpt.victor@hotmail.com',
+        name: 'John Doe',
+        nickname: 'johnDoe',
+        email: 'john.doe@email.com',
         password: 'qweqweqweqweqweqweqweqweqweqweqweqweqweqwqweqweeqweqwe',
       } as UserInputDTO;
 
-      await authMock(user);
+      await SignUpMock(user);
     } catch (error) {
       expect(error.message).toContain('Password is too long.');
     }
@@ -159,8 +158,8 @@ describe('SignUp Test Suite', () => {
       password: 'qweqwe',
     } as UserInputDTO;
 
-    const result = await authMock(user);
+    const result = await SignUpMock(user);
 
-    expect(await authMock(user)).toMatch(result);
+    expect(await SignUpMock(user)).toMatch(result);
   });
 });

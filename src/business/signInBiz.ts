@@ -1,24 +1,29 @@
-import queryUserByEmail from '../data/user/queryUserByEmail';
+import { authData } from '../model/authData';
 import { SignInInputDTO, User } from '../model/user';
-import { generateToken } from '../services/auth';
-import { compare } from '../services/hash';
+import { inputValidator } from '../utils/inputValidator';
 
-const signInBiz = async (input: SignInInputDTO): Promise<string> => {
+const signInBiz = async (
+  input: SignInInputDTO,
+  queryUserByEmail: (email: string) => Promise<User>,
+  comparePassword: (password: string, hash: string) => Promise<boolean>,
+  generateToken: (payload: authData) => string
+): Promise<string> => {
   try {
-    if (!input.email) throw new Error('Email field is empty.');
-    if (!input.password) throw new Error('Password field is empty.');
-
-    const user: User = await queryUserByEmail(input.email);
-
+    // Check if fields are empty
+    inputValidator(input.email, 'Email');
+    inputValidator(input.password, 'Password');
+    // Query user
+    const user = await queryUserByEmail(input.email);
+    // Check if user is registered
     if (!user) throw new Error('User not found.');
-
-    const passwordIsValid: boolean = await compare(
+    // Compare input password with hashed
+    const passwordIsValid = await comparePassword(
       input.password,
       user.password
     );
-
+    // Check if password is valid
     if (!passwordIsValid) throw new Error('Incorrect password.');
-
+    // Generate logged in user token
     const token: string = generateToken({
       id: user.id,
     });

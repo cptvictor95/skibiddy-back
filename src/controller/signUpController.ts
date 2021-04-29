@@ -6,10 +6,6 @@ import { UserInputDTO } from '../model/user';
 import { generateToken } from '../services/auth';
 import { hash } from '../services/hash';
 import createId from '../services/idGen';
-import { emailValidator } from '../utils/emailValidator';
-import { inputValidator } from '../utils/inputValidator';
-import { passwordValidator } from '../utils/passwordValidator';
-import { registeredValidator } from '../utils/registeredValidator';
 
 const signUpController = async (
   req: Request,

@@ -1,9 +1,5 @@
-import insertUser from '../data/user/insertUser';
 import { authData } from '../model/authData';
 import { User, UserInputDTO } from '../model/user';
-import { generateToken } from '../services/auth';
-import { hash } from '../services/hash';
-import createId from '../services/idGen';
 import { emailValidator } from '../utils/emailValidator';
 import { inputValidator } from '../utils/inputValidator';
 import { passwordValidator } from '../utils/passwordValidator';
