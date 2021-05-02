@@ -2,7 +2,7 @@
   "name": "skibbidy-backend",
   "version": "v1",
   "description": "Backend for a music sharing app",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "https://github.com/cptvictor95/skibiddy-back.git",
   "author": "Victor Cardoso Pudo Torres",
   "license": "MIT",
