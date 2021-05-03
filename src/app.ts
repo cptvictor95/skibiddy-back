@@ -10,9 +10,18 @@ const app: Express = express();
 // .env config
 dotenv.config();
 
+// CORS config
+const allowedOrigins = [
+  'http://localhost:3000/*',
+  'https://skibiddy-front.herokuapp.com/*',
+];
+const options: cors.CorsOptions = {
+  origin: allowedOrigins,
+};
+
 // App config
 app.use(express.json());
-app.use(cors());
+app.use(cors(options));
 
 // Routes
 app.use(authRoutes);

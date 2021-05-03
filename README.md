@@ -4,6 +4,58 @@ This is a study project created with the intent of practicing the knowledge lear
 The project is intended to be a music platform where you can publish your own music, initially through hyperlinks.
 
 
+### My References
+- Deezer
+- Spotify
+- Tidal
+- Apple Music
+- SoundCloud
+
+
+### Dependencies
+
+<details>
+<summary>
+Production
+</summary>
+
+- ##### bcryptjs
+- ##### cors
+- ##### dotenv
+- ##### express
+- ##### jsonwebtoken
+- ##### knex
+- ##### mysql
+- ##### uuid
+</details>
+
+<details>
+<summary>
+Development
+</summary>
+
+- ##### @types/bcryptjs
+- ##### @types/cors
+- ##### @types/express
+- ##### @types/graceful-fs
+- ##### @types/jest
+- ##### @types/jsonwebtoken
+- ##### @types/knex
+- ##### @types/node
+- ##### @types/uuid
+- ##### @typescript-eslint/eslint-plugin
+- ##### @typescript-eslint/parser
+- ##### eslint
+- ##### eslint-config-prettier
+- ##### eslint-plugin-prettier
+- ##### jest
+- ##### nodemon
+- ##### prettier
+- ##### ts-jest
+- ##### ts-node
+- ##### typescript
+</details>
+
 ## Entities structure examples:
 
 #### User
@@ -102,42 +154,3 @@ If you use NPM
 ```
 npm run test
 ```
-
-### References
-- Deezer
-- Spotify
-- Tidal
-- Apple Music
-- SoundCloud
-
-#### Production Dependencies
-- ##### bcryptjs
-- ##### cors
-- ##### dotenv
-- ##### express
-- ##### jsonwebtoken
-- ##### knex
-- ##### mysql
-- ##### uuid
-
-#### Development Dependencies
-- ##### @types/bcryptjs
-- ##### @types/cors
-- ##### @types/express
-- ##### @types/graceful-fs
-- ##### @types/jest
-- ##### @types/jsonwebtoken
-- ##### @types/knex
-- ##### @types/node
-- ##### @types/uuid
-- ##### @typescript-eslint/eslint-plugin
-- ##### @typescript-eslint/parser
-- ##### eslint
-- ##### eslint-config-prettier
-- ##### eslint-plugin-prettier
-- ##### jest
-- ##### nodemon
-- ##### prettier
-- ##### ts-jest
-- ##### ts-node
-- ##### typescript
