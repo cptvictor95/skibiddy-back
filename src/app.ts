@@ -12,7 +12,7 @@ dotenv.config();
 
 // CORS config
 const allowedOrigins = [
-  'http://localhost:3000/*',
+  'http://localhost:3000/signin',
   'https://skibiddy-front.herokuapp.com/signin',
 ];
 const options: cors.CorsOptions = {
@@ -21,7 +21,7 @@ const options: cors.CorsOptions = {
 
 // App config
 app.use(express.json());
-app.use(cors(options));
+app.use(cors());
 
 // Routes
 app.use(authRoutes);
