@@ -13,7 +13,7 @@ dotenv.config();
 // CORS config
 const allowedOrigins = [
   'http://localhost:3000/*',
-  'https://skibiddy-front.herokuapp.com/*',
+  'https://skibiddy-front.herokuapp.com/signin',
 ];
 const options: cors.CorsOptions = {
   origin: allowedOrigins,
