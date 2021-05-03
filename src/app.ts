@@ -13,19 +13,11 @@ dotenv.config();
 // CORS config
 const whitelist = [
   'http://localhost:3000',
-  'https://skibiddy-front.herokuapp.com',
+  'https://skibiddy-front.herokuapp.com/',
 ];
-const corsOptions = {
-  origin: function (origin: any, callback: any) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
+
 // App config
-app.use(cors(corsOptions));
+app.use(cors({ origin: 'https://skibiddy-front.herokuapp.com/' }));
 app.use(express.json());
 
 // Routes
