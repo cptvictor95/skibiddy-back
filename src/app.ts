@@ -11,17 +11,22 @@ const app: Express = express();
 dotenv.config();
 
 // CORS config
-const allowedOrigins = [
-  'http://localhost:3000/signin',
-  'https://skibiddy-front.herokuapp.com/signin',
+const whitelist = [
+  'http://localhost:3000',
+  'https://skibiddy-front.herokuapp.com',
 ];
-const options: cors.CorsOptions = {
-  origin: allowedOrigins,
+const corsOptions = {
+  origin: function (origin: any, callback: any) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
 };
-
 // App config
+app.use(cors(corsOptions));
 app.use(express.json());
-app.use(cors());
 
 // Routes
 app.use(authRoutes);
