@@ -21,7 +21,7 @@ const options: cors.CorsOptions = {
   origin: ['http://localhost:3000', 'https://skibiddy-front.herokuapp.com'],
 };
 
-app.use(cors({ origin: '*' }));
+app.use(cors());
 app.use(express.json());
 
 // Routes
