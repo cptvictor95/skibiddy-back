@@ -17,7 +17,12 @@ const whitelist = [
 ];
 
 // App config
-app.use(cors({ origin: 'https://skibiddy-front.herokuapp.com/' }));
+app.use(
+  cors({
+    credentials: true,
+    origin: ['http://localhost:3000', 'https://skibiddy-front.herokuapp.com'],
+  })
+);
 app.use(express.json());
 
 // Routes
