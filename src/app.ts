@@ -27,7 +27,7 @@ const options: cors.CorsOptions = {
   ],
   credentials: true,
   methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-  origin: 'https://skibiddy-front.herokuapp.com',
+  origin: 'https://skibiddy-front.herokuapp.com/',
   preflightContinue: false,
 };
 
