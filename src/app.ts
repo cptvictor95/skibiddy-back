@@ -10,17 +10,7 @@ const app: Express = express();
 // .env config
 dotenv.config();
 
-// CORS config
-const whitelist = [
-  'http://localhost:3000',
-  'https://skibiddy-front.herokuapp.com/',
-];
-
 // App config
-const options: cors.CorsOptions = {
-  origin: ['http://localhost:3000', 'https://skibiddy-front.herokuapp.com'],
-};
-
 app.use(cors());
 app.use(express.json());
 
