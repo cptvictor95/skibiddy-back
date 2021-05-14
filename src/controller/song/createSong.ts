@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import createSongBiz from '../../business/song/createSongBiz';
-import queryUserByEmail from '../../data/user/queryUserByEmail';
 import queryUserById from '../../data/user/queryUserById';
 import { SongInputDTO } from '../../model/song';
 import { getTokenData } from '../../services/auth';

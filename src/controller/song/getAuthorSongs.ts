@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import getAuthorSongsBiz from '../../business/song/getAuthorSongsBiz';
 import querySongsByAuthor from '../../data/song/querySongsByAuthor';
 import queryUserByName from '../../data/user/queryUserByName';
-import { getTokenData } from '../../services/auth';
 
 /**
  * @TODO
@@ -16,9 +15,8 @@ const getAuthorSongs = async (
   try {
     const name = req.query.name as string;
 
-    const user = await queryUserByName(name);
+    const user = await queryUserByName(name as string);
     const token = req.headers.authorization as string;
-    const id = getTokenData(token);
 
     const songs = await getAuthorSongsBiz(user.id, token, querySongsByAuthor);
 
