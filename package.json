@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Starting tests...\" && jest --detectOpenHandles",
     "start": "tsc && node ./build/server.js",
-    "dev": "clear && nodemon ./src/server.ts"
+    "dev": "clear && nodemon ./src/server.ts",
+    "migrations": "tsc && node ./build/data/migrations.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

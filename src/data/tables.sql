@@ -18,7 +18,23 @@ CREATE TABLE IF NOT EXISTS Songs (
   FOREIGN KEY (author_id) REFERENCES Users(id)
 );
 
+-- Genres table structure
 CREATE TABLE IF NOT EXISTS Genres (
   id VARCHAR(64) NOT NULL PRIMARY KEY,
-  name VARCHAR(64) NOT NULL
+  name VARCHAR(64) NOT NULL,
+  song_id VARCHAR(64),
+  FOREIGN KEY (song_id) REFERENCES Songs(id),
+);
+
+-- Playlists table structure
+CREATE TABLE IF NOT EXISTS Playlists (
+	id VARCHAR(64) NOT NULL PRIMARY KEY,
+    title VARCHAR(64) NOT NULL,
+    subtitle VARCHAR(64) NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    song_id VARCHAR(64),
+    author_id VARCHAR(64),
+    FOREIGN KEY (song_id) REFERENCES Songs(id),
+    FOREIGN KEY (author_id) REFERENCES Users(id)
 );
